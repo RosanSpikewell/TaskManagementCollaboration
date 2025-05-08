@@ -1,17 +1,18 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.management.relation.Role;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Users")
+@Builder
 public class User {
 
     @Id
@@ -49,5 +50,13 @@ public class User {
             name = "Updated At"
     )
     private Date updatedat;
+
+
+    @OneToMany(mappedBy = "user")
+    private List<Task> tasks = new ArrayList<>();
+
+
+    @ManyToOne
+    private Project project;
 
 }
