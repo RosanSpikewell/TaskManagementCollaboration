@@ -15,16 +15,16 @@ public class Task {
     @Id
     private String id;
 
-    @Column(name = "Title",nullable = false)
+    @Column(name = "Title", nullable = false)
     private String title;
 
-    @Column(name = "Description",nullable = true)
+    @Column(name = "Description", nullable = true)
     private String description;
 
-    @Column(name = "Due Date",nullable = false)
+    @Column(name = "Due Date", nullable = false)
     private Date duedate;
 
-    @Column(name = "Status",nullable = false)
+    @Column(name = "Status", nullable = false)
     private Status status = Status.PENDING;
 
     @Column(name = "Created At", updatable = false)
@@ -32,7 +32,6 @@ public class Task {
 
     @Column(name = "Updated At")
     private Date updatedat;
-
 
 
     @ManyToOne

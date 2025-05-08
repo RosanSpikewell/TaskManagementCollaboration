@@ -34,7 +34,7 @@ public class User {
     private String password;
 
 
-    @Column(name = "Role",nullable = false,updatable = false)
+    @Column(name = "Role", nullable = false, updatable = false)
     private Roles roles;
 
     @Column(name = "Is Active")

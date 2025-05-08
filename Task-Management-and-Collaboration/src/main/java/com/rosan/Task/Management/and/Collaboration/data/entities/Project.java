@@ -17,7 +17,7 @@ public class Project {
     @Id
     private String id;
 
-    @Column(name = "Name",nullable = false)
+    @Column(name = "Name", nullable = false)
     private String name;
 
     @Column(name = "Client Name", nullable = false)
