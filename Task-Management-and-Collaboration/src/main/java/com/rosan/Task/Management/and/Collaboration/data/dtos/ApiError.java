@@ -1,23 +1,19 @@
-package com.rosan.Task.Management.and.Collaboration.data.entities;
-
-
+package com.rosan.Task.Management.and.Collaboration.data.dtos;
 
 import java.util.Date;
 
-public class ApiResponse<T>{
+public class ApiError {
 
     private int statusCode;
     private String message;
-    private T data;
     private Date timeStamp;
 
-    public ApiResponse() {
+    public ApiError() {
     }
 
-    public ApiResponse(int statusCode, String message, T data, Date timeStamp) {
+    public ApiError(int statusCode, String message, Date timeStamp) {
         this.statusCode = statusCode;
         this.message = message;
-        this.data = data;
         this.timeStamp = timeStamp;
     }
 
@@ -37,14 +33,6 @@ public class ApiResponse<T>{
         this.message = message;
     }
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
     public Date getTimeStamp() {
         return timeStamp;
     }
@@ -55,10 +43,9 @@ public class ApiResponse<T>{
 
     @Override
     public String toString() {
-        return "ApiResponse{" +
+        return "ApiError{" +
                 "statusCode=" + statusCode +
                 ", message='" + message + '\'' +
-                ", data=" + data +
                 ", timeStamp=" + timeStamp +
                 '}';
     }

@@ -1,13 +1,12 @@
 package com.rosan.Task.Management.and.Collaboration.exceptions;
 
-import com.rosan.Task.Management.and.Collaboration.data.entities.ApiError;
+import com.rosan.Task.Management.and.Collaboration.data.dtos.ApiError;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @ControllerAdvice
@@ -33,5 +32,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = NotFoundException.class)
     public ResponseEntity<ApiError> handleNotFound(NotFoundException ex){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiError(404, ex.getMessage(), new Date()));
+    }
+    @ExceptionHandler(value = PasswordMismatchException.class)
+    public ResponseEntity<ApiError> handlePasswordMismatchException(PasswordMismatchException ex){
+        return ResponseEntity.status(422).body(new ApiError(422, ex.getMessage(), new Date()));
     }
 }

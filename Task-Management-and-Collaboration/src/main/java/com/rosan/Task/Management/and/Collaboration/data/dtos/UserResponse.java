@@ -1,7 +1,5 @@
-package com.rosan.Task.Management.and.Collaboration.data.entities;
+package com.rosan.Task.Management.and.Collaboration.data.dtos;
 
-
-import lombok.Data;
 
 import java.util.Date;
 
@@ -27,6 +25,7 @@ public class UserResponse {
     private Date updatedAt;
 
     public UserResponse() {
+
     }
 
     public UserResponse(String id, Date updatedAt, Date createdAt, String roles, String email, String lastname, String middlename, String firstname) {
