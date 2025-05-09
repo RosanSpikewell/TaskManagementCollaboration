@@ -1,19 +1,23 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
+
+
 import java.util.Date;
 
-public class ApiError {
+public class ApiResponse<T>{
 
     private int statusCode;
     private String message;
+    private T data;
     private Date timeStamp;
 
-    public ApiError() {
+    public ApiResponse() {
     }
 
-    public ApiError(int statusCode, String message, Date timeStamp) {
+    public ApiResponse(int statusCode, String message, T data, Date timeStamp) {
         this.statusCode = statusCode;
         this.message = message;
+        this.data = data;
         this.timeStamp = timeStamp;
     }
 
@@ -33,6 +37,14 @@ public class ApiError {
         this.message = message;
     }
 
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
     public Date getTimeStamp() {
         return timeStamp;
     }
@@ -43,9 +55,10 @@ public class ApiError {
 
     @Override
     public String toString() {
-        return "ApiError{" +
+        return "ApiResponse{" +
                 "statusCode=" + statusCode +
                 ", message='" + message + '\'' +
+                ", data=" + data +
                 ", timeStamp=" + timeStamp +
                 '}';
     }
