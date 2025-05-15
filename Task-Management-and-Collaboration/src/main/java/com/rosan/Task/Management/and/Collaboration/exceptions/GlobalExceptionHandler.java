@@ -4,6 +4,7 @@ import com.rosan.Task.Management.and.Collaboration.data.dtos.ApiError;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -37,4 +38,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiError> handlePasswordMismatchException(PasswordMismatchException ex){
         return ResponseEntity.status(422).body(new ApiError(422, ex.getMessage(), new Date()));
     }
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiError> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
+        return ResponseEntity.status(400).body(new ApiError(400, ex.getMessage(), new Date()));
+    }
+
 }

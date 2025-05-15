@@ -77,7 +77,6 @@ public class UserService implements IUserService {
     public UserResponse update(UserUpdateRequest userRequest, String id, BindingResult result) {
         if (id.isBlank())
             throw new AllFieldsRequiered("Id is Required");
-        //TODO: This exception not working (Need fixes)
         if (result.hasErrors())
             throw new AllFieldsRequiered("Requied Fields are missing or Error While Validating the Data");
         try {
