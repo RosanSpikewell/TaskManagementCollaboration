@@ -1,5 +1,6 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -55,6 +56,7 @@ public class User {
     private List<Task> tasks = new ArrayList<>();
 
 
+    @JsonManagedReference
     @ManyToOne
     private Project project;
 

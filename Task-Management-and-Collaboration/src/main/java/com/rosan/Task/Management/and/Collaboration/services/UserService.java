@@ -1,7 +1,9 @@
 package com.rosan.Task.Management.and.Collaboration.services;
 
 import com.rosan.Task.Management.and.Collaboration.data.dtos.*;
+import com.rosan.Task.Management.and.Collaboration.data.entities.Project;
 import com.rosan.Task.Management.and.Collaboration.data.entities.User;
+import com.rosan.Task.Management.and.Collaboration.data.repositories.ProjectRepositroy;
 import com.rosan.Task.Management.and.Collaboration.data.repositories.UserRepository;
 import com.rosan.Task.Management.and.Collaboration.exceptions.*;
 import com.rosan.Task.Management.and.Collaboration.utils.EncryptionUtils;
@@ -22,6 +24,9 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProjectRepositroy projectRepositroy;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -124,6 +129,22 @@ public class UserService implements IUserService {
             userRepository.save(user);
         } catch (ErrorWhileCreatingEntity ex) {
             throw new ErrorWhileCreatingEntity("Error Occured while Updating the password.");
+        }
+    }
+
+    @Override
+    public void assignProject(String userid, String projectid) {
+        User user = userRepository.findById(userid).orElseThrow(()->new NotFoundException("User not Found"));
+        if(!user.getActive()){
+            throw new NotFoundException("User not Found");
+        }
+        Project project = projectRepositroy.findById(projectid).orElseThrow(()->new NotFoundException("Project not Found"));
+        user.setProject(project);
+        try{
+            userRepository.save(user);
+        }catch (ErrorWhileCreatingEntity ex)
+        {
+            throw new ErrorWhileCreatingEntity("Error Occurred while saving the user");
         }
     }
 }

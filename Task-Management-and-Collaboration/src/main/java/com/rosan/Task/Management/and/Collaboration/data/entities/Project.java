@@ -1,5 +1,6 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -38,6 +39,7 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
 
 
+    @JsonBackReference
     @OneToMany(mappedBy = "project")
     private List<User> users = new ArrayList<>();
 

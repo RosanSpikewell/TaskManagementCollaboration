@@ -65,4 +65,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(200,"Password Changed",new Empty(),new Date()));
     }
 
+    @PatchMapping("/{userid}/project")
+    public ResponseEntity asignProject(@PathVariable String userid,@RequestParam(name = "id") String id)
+    {
+        userService.assignProject(userid,id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

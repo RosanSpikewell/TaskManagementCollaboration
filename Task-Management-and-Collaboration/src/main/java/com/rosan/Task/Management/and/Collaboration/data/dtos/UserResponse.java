@@ -1,6 +1,8 @@
 package com.rosan.Task.Management.and.Collaboration.data.dtos;
 
 
+import com.rosan.Task.Management.and.Collaboration.data.entities.Project;
+
 import java.util.Date;
 
 public class UserResponse {
@@ -24,27 +26,22 @@ public class UserResponse {
     private Date createdAt;
     private Date updatedAt;
 
+    private Project project;
+
     public UserResponse() {
 
     }
 
-    public UserResponse(String id, Date updatedAt, Date createdAt, String roles, String email, String lastname, String middlename, String firstname) {
+    public UserResponse(String id, String firstname, String middlename, String lastname, String email, String roles, Date createdAt, Date updatedAt, Project project) {
         this.id = id;
-        this.updatedAt = updatedAt;
-        this.createdAt = createdAt;
-        this.roles = roles;
-        this.email = email;
-        this.lastname = lastname;
+        this.firstname = firstname;
         this.middlename = middlename;
-        this.firstname = firstname;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.roles = roles;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.project = project;
     }
 
     public String getId() {
@@ -53,6 +50,14 @@ public class UserResponse {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getMiddlename() {
@@ -103,18 +108,11 @@ public class UserResponse {
         this.updatedAt = updatedAt;
     }
 
+    public Project getProject() {
+        return project;
+    }
 
-    @Override
-    public String toString() {
-        return "UserResponse{" +
-                "id='" + id + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", middlename='" + middlename + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", email='" + email + '\'' +
-                ", roles='" + roles + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+    public void setProject(Project project) {
+        this.project = project;
     }
 }

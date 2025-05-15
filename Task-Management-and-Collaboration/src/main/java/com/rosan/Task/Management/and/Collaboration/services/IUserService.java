@@ -15,4 +15,5 @@ public interface IUserService {
     public UserResponse update(UserUpdateRequest userRequest, String id, BindingResult result);
     public UserResponse delete(String id);
     public void updatePassword(ChangePasswordDto passwordDto,String id,BindingResult result);
+    void assignProject(String userid,String projectid);
 }
