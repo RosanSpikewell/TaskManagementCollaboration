@@ -1,5 +1,6 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -52,6 +53,7 @@ public class User {
     private Date updatedat;
 
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<>();
 

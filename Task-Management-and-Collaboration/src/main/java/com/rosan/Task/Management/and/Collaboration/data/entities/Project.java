@@ -36,7 +36,7 @@ public class Project {
     @Column(name = "Updated At")
     private Date updatedat;
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
 

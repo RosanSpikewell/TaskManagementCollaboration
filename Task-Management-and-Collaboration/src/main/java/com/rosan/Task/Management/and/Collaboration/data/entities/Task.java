@@ -1,6 +1,7 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -32,11 +33,12 @@ public class Task {
     private Date updatedat;
 
 
+    @JsonBackReference
     @ManyToOne
     private User user;
 
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
     private Project project;
 

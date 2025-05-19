@@ -2,8 +2,10 @@ package com.rosan.Task.Management.and.Collaboration.data.dtos;
 
 
 import com.rosan.Task.Management.and.Collaboration.data.entities.Project;
+import com.rosan.Task.Management.and.Collaboration.data.entities.Task;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserResponse {
 
@@ -28,11 +30,12 @@ public class UserResponse {
 
     private Project project;
 
-    public UserResponse() {
+    private List<Task> tasks;
 
+    public UserResponse() {
     }
 
-    public UserResponse(String id, String firstname, String middlename, String lastname, String email, String roles, Date createdAt, Date updatedAt, Project project) {
+    public UserResponse(String id, String firstname, String middlename, String lastname, String email, String roles, Date createdAt, Date updatedAt, Project project, List<Task> tasks) {
         this.id = id;
         this.firstname = firstname;
         this.middlename = middlename;
@@ -42,6 +45,7 @@ public class UserResponse {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.project = project;
+        this.tasks = tasks;
     }
 
     public String getId() {
@@ -114,5 +118,29 @@ public class UserResponse {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    @Override
+    public String toString() {
+        return "UserResponse{" +
+                "id='" + id + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", middlename='" + middlename + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", roles='" + roles + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", project=" + project +
+                ", tasks=" + tasks +
+                '}';
     }
 }
