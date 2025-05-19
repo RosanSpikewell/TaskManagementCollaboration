@@ -43,4 +43,5 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(400).body(new ApiError(400, ex.getMessage(), new Date()));
     }
 
+
 }

@@ -1,6 +1,7 @@
 package com.rosan.Task.Management.and.Collaboration.data.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +36,7 @@ public class Project {
     @Column(name = "Updated At")
     private Date updatedat;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
 
@@ -128,5 +130,20 @@ public class Project {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", clientname='" + clientname + '\'' +
+                ", startdate=" + startdate +
+                ", enddate=" + enddate +
+                ", createdat=" + createdat +
+                ", updatedat=" + updatedat +
+                ", tasks=" + tasks +
+                ", users=" + users +
+                '}';
     }
 }

@@ -1,25 +1,20 @@
 package com.rosan.Task.Management.and.Collaboration.controllers;
 
 import com.rosan.Task.Management.and.Collaboration.data.dtos.*;
-import com.rosan.Task.Management.and.Collaboration.exceptions.AllFieldsRequiered;
 import com.rosan.Task.Management.and.Collaboration.services.IUserService;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private IUserService userService;
 
@@ -65,10 +60,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(200,"Password Changed",new Empty(),new Date()));
     }
 
-    @PatchMapping("/{userid}/project")
-    public ResponseEntity asignProject(@PathVariable String userid,@RequestParam(name = "id") String id)
+    @PatchMapping("/{userid}/projects/{projectid}")
+    public ResponseEntity assignProject(@PathVariable String userid,@PathVariable String projectid)
     {
-        userService.assignProject(userid,id);
+        userService.assignProject(userid,projectid);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
